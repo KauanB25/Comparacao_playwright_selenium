@@ -1,4 +1,4 @@
 # Comparação Playwright vs Selenium
 
 Video do funcionamento
-![Vídeo Demo](./Funcionamento.webm)
+![Vídeo do Funcionamento](./Funcionamento.webm)
