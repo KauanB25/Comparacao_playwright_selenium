@@ -22,14 +22,20 @@ class SnipeIT:
 
         self.driver.get(getenv('url_login'))
 
+        self.driver.get_title()
+        
+        if 'maintenance' in self.driver.get_title().lower():
+            return False
+            
         self.driver.find_element(By.ID,"username").send_keys(getenv("user"))
 
         self.driver.find_element(By.ID,"password").send_keys(getenv("senha"))
 
         self.driver.find_element(By.ID,'submit').click()
+
+        return True
         
     def cadastro(self,numero_serie):
-
         #Vai até o link de criação do ativo
         self.driver.get("https://demo.snipeitapp.com/hardware/create")
         

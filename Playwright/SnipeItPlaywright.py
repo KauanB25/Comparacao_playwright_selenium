@@ -13,11 +13,19 @@ class SnipeIT:
         
         self.page.goto(getenv('url_login'))
 
-        self.page.fill("#username", getenv("user"))
+        titulo_pagina = self.page.title()
+        
+        if 'maintenance' in titulo_pagina.lower():
+            return False
+        else:
 
-        self.page.fill("#password", getenv("senha"))
+            self.page.fill("#username", getenv("user"))
 
-        self.page.click("#submit")
+            self.page.fill("#password", getenv("senha"))
+
+            self.page.click("#submit")
+
+            return True
         
     def cadastro(self,numero_serie):
 
@@ -42,7 +50,7 @@ class SnipeIT:
             print(f"Opção selecionada: {opcoes_companhia[0].text_content()}")
             opcoes_companhia[0].click()
         
-        self.page.fill("#serials[1]", numero_serie)
+        self.page.fill("#serials\\[1\\]", numero_serie)
         
         self.page.click("#select2-model_select_id-container")
         

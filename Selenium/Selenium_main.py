@@ -6,13 +6,15 @@ driver = webdriver.Chrome()
 
 snipeIt = SnipeIT(driver)
 
-snipeIt.login()
+resultado_login=snipeIt.login()
 
 numero_serie='PE0AR5T7'
 
-snipeIt.cadastro(numero_serie)
+if resultado_login:
 
-snipeIt.excluir(numero_serie)
+    snipeIt.cadastro(numero_serie)
+
+    snipeIt.excluir(numero_serie)
 
 driver.quit()
 
